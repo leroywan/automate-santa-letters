@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const fetch = require("node-fetch");
 const path = require("path");
+const wrap = require("word-wrap");
 dotenv.config();
 
 const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env;

@@ -1,3 +1,5 @@
+const wrap = require("word-wrap");
+
 const c = document.getElementById("canvas");
 const ctx = c.getContext("2d");
 
@@ -17,5 +19,6 @@ submitInput.addEventListener("click", async (e) => {
 
   const data = await (await fetch(`/order/${orderIdInput.value}`)).json();
 
+  console.log(wrap("A really long string.", { width: 40 }));
   output.appendChild(document.createTextNode(JSON.stringify(data)));
 });
