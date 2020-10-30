@@ -113,8 +113,8 @@ Rudolph and the rest of the reindeer love seeing the ${lineItems["Nearby Landmar
       };
     case "The Visit":
       return {
-        fontSize: 18,
-        lineHeight: 26,
+        fontSize: 16.5,
+        lineHeight: 21,
         width: 60,
         letter: theVisit,
       };
