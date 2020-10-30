@@ -13,12 +13,14 @@ img.src =
 const orderIdInput = document.getElementById("orderId");
 const submitInput = document.getElementById("submit");
 const output = document.getElementById("output");
+const itemSelector = document.getElementById("itemSelector");
 
 submitInput.addEventListener("click", async (e) => {
   e.preventDefault();
 
-  const data = await (await fetch(`/order/${orderIdInput.value}`)).json();
+  const data = await (
+    await fetch(`/order/${orderIdInput.value}?item=${itemSelector.value}`)
+  ).json();
 
-  console.log(wrap("A really long string.", { width: 40 }));
-  output.appendChild(document.createTextNode(JSON.stringify(data)));
+  output.appendChild(document.createTextNode(wrap(data.letter, { width: 40 })));
 });
