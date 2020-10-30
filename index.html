@@ -25,6 +25,10 @@
       justify-content: space-between;
     }
 
+    .control {
+      margin-bottom: 10px;
+    }
+
     .input, .button {
       padding: 5px;
     }
@@ -33,19 +37,23 @@
   <div class="app">
     <canvas id="canvas" width="2520" height="3288"></canvas>
     <div class="controls">
-      <input class="input" id="orderId" placeholder="Order ID" />
-      <select class="input" id="itemSelector">
-        <option value="0">1</option>
-        <option value="1">2</option>
-        <option value="2">3</option>
-        <option value="3">4</option>
-        <option value="4">5</option>
-        <option value="5">6</option>
-        <option value="6">7</option>
-      </select>
-      <button class="button" id="submit">Get letter</button>
-      <div>
-        <p id="output"></p>
+      <div class="control">
+        <input class="input" id="orderId" placeholder="Order ID" />
+        <select class="input" id="itemSelector">
+          <option value="0">1</option>
+          <option value="1">2</option>
+          <option value="2">3</option>
+          <option value="3">4</option>
+          <option value="4">5</option>
+          <option value="5">6</option>
+          <option value="6">7</option>
+        </select>
+        <button class="button" id="submit">Get letter</button>
+      </div>
+      <div class="control">
+        <input class="input" id="fontSize" placeholder="Font size" />
+        <input class="input" id="lineHeight" placeholder="Line height" />
+        <input class="input" id="contentWidth" placeholder="Content width" />
       </div>
     </div>
   </div>
