@@ -6,8 +6,40 @@
   <title>Woo</title>
 </head>
 <body>
-  <h1>Hello</h1>
-  <canvas id="canvas" width="2520" height="3288"></canvas>
+  <style>
+    #canvas {
+      display: block;
+      max-width: 580px;
+      margin: 20px auto;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+      width: 1200px;
+    }
+
+    .controls {
+      padding: 40px 0;
+      justify-content: space-between;
+    }
+
+    .input, .button {
+      padding: 5px;
+    }
+
+  </style>
+  <div class="app">
+    <canvas id="canvas" width="2520" height="3288"></canvas>
+    <div class="controls">
+      <input class="input" id="orderId" placeholder="Order ID" />
+      <button class="button" id="submit">Get letter</button>
+      <div>
+        <p id="output"></p>
+      </div>
+    </div>
+  </div>
   <script src="/public/app.js"></script>
 </body>
 </html>

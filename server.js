@@ -26,22 +26,22 @@ app.get("/order/:id", async (req, res) => {
           Accept: "application/json",
         },
         body: `
-      {
-        order(id: "gid://shopify/Order/${req.params.id}") {
-          lineItems(first: 5) {
-            edges {
-              node {
-                name
-                customAttributes {
-                  key
-                  value
+          {
+            order(id: "gid://shopify/Order/${req.params.id}") {
+              lineItems(first: 5) {
+                edges {
+                  node {
+                    name
+                    customAttributes {
+                      key
+                      value
+                    }
+                  }
                 }
               }
             }
           }
-        }
-      }
-    `,
+        `,
       }
     )
   ).json();
