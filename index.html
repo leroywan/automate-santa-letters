@@ -48,13 +48,18 @@
           <option value="5">6</option>
           <option value="6">7</option>
         </select>
-        <button class="button" id="submit">Get letter</button>
+        <button class="button" id="submit">Get order</button>
       </div>
       <div class="control">
         <input class="input" id="fontSize" placeholder="Font size" />
         <input class="input" id="lineHeight" placeholder="Line height" />
         <input class="input" id="contentWidth" placeholder="Content width" />
       </div>
+      <div class="control">
+        <label for="enabledBg">Enable background</label>
+        <input id="enabledBg" type="checkbox" checked />
+      </div>
+      <p id="output"></p>
     </div>
   </div>
   <script src="/public/bundle.js"></script>

@@ -61,6 +61,7 @@ function getLetterFromData(r, item = 0) {
   letter.customAttributes.forEach((item) => {
     lineItems[item.key] = item.value.trim();
   });
+  const numOfItems = r.data.order.lineItems.edges.length;
 
   const niceList = `Dear ${lineItems["First Name"]},\n
 I looked at my naughty list a few minutes ago and there were a lot of names written on it. I can’t believe there were more naughty children than nice ones this year! With that said, I have checked twice and I am extremely happy to announce that you are not on the naughty list but actually one of the top names on my official nice list this year! It is usually hard for me to decide which child gets to be on the nice list but you made the decision very easy for me this year because ${lineItems["Good Behaviour"]}.\n
@@ -85,6 +86,7 @@ Rudolph and the rest of the reindeer love seeing the ${lineItems["Nearby Landmar
   switch (letter.name) {
     case "Nice List":
       return {
+        numOfItems,
         fontSize: 18,
         lineHeight: 23,
         width: 60,
@@ -92,6 +94,7 @@ Rudolph and the rest of the reindeer love seeing the ${lineItems["Nearby Landmar
       };
     case "The Present":
       return {
+        numOfItems,
         fontSize: 19,
         lineHeight: 25,
         width: 56,
@@ -99,6 +102,7 @@ Rudolph and the rest of the reindeer love seeing the ${lineItems["Nearby Landmar
       };
     case "Christmas Coal":
       return {
+        numOfItems,
         fontSize: 17.5,
         lineHeight: 26,
         width: 60,
@@ -106,6 +110,7 @@ Rudolph and the rest of the reindeer love seeing the ${lineItems["Nearby Landmar
       };
     case "Family History":
       return {
+        numOfItems,
         fontSize: 18,
         lineHeight: 26,
         width: 60,
@@ -113,6 +118,7 @@ Rudolph and the rest of the reindeer love seeing the ${lineItems["Nearby Landmar
       };
     case "The Visit":
       return {
+        numOfItems,
         fontSize: 16.5,
         lineHeight: 21,
         width: 60,
