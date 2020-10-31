@@ -70,7 +70,12 @@ contentWidthInput.addEventListener("change", handleUpdateLetter);
 enabledBgInput.addEventListener("change", function (e) {
   const { lineHeight, fontSize, letter, width } = letterData;
   ctx.clearRect(0, 0, pt(c.clientWidth) * 5, pt(c.clientHeight) * 5);
-  writeLetter(letter, fontSize, lineHeight, width);
+  writeLetter(
+    letter,
+    fontSizeInput.value || fontSize,
+    lineHeightInput.value || lineHeight,
+    contentWidthInput.value || width
+  );
 
   if (e.target.checked) {
     ctx.drawImage(img, 45, 45);
@@ -84,7 +89,7 @@ submitInput.addEventListener("click", async (e) => {
     await fetch(`/order/${orderIdInput.value}?item=${itemSelector.value}`)
   ).json();
 
-  const { lineHeight, fontSize, letter, width, numOfItems } = data;
+  const { lineHeight, fontSize, letter, width, numOfItems, orderNumber } = data;
 
   // Set values for the input elements
   letterData = data;
@@ -92,7 +97,9 @@ submitInput.addEventListener("click", async (e) => {
   fontSizeInput.value = fontSize;
   contentWidthInput.value = width;
   output.appendChild(
-    document.createTextNode(`${numOfItems} item(s) found in this order`)
+    document.createTextNode(
+      `${numOfItems} item(s) found in order ${orderNumber}`
+    )
   );
   writeLetter(letter, fontSize, lineHeight, width);
 
