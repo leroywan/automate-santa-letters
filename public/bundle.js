@@ -12,7 +12,7 @@ const ctx = c.getContext("2d");
 // Draw background image
 const img = new Image();
 img.onload = function () {
-  ctx.drawImage(img, 45, 45);
+  drawerLetterhead();
 };
 img.src =
   "https://santas-postal-service.s3.us-east-2.amazonaws.com/images/letterhead.png";
@@ -41,6 +41,14 @@ const enabledBgInput = document.getElementById("enabledBg");
 const x = pt(60);
 const y = pt(180);
 
+function drawerLetterhead() {
+  ctx.drawImage(img, 45, 45);
+}
+
+function clearBoard() {
+  ctx.clearRect(0, 0, pt(c.clientWidth) * 5, pt(c.clientHeight) * 5);
+}
+
 function writeLetter(letter, fontSize, lineHeight, width) {
   const letterWrapped = wrap(letter, { width: width });
   const lines = letterWrapped.split("\n").map((item) => item.trim());
@@ -53,7 +61,7 @@ function writeLetter(letter, fontSize, lineHeight, width) {
 let letterData;
 function handleUpdateLetter(e) {
   const { lineHeight, fontSize, letter, width } = letterData;
-  ctx.clearRect(0, 0, pt(c.clientWidth) * 5, pt(c.clientHeight) * 5);
+  clearBoard();
   ctx.drawImage(img, 45, 45);
 
   writeLetter(
@@ -69,7 +77,7 @@ fontSizeInput.addEventListener("change", handleUpdateLetter);
 contentWidthInput.addEventListener("change", handleUpdateLetter);
 enabledBgInput.addEventListener("change", function (e) {
   const { lineHeight, fontSize, letter, width } = letterData;
-  ctx.clearRect(0, 0, pt(c.clientWidth) * 5, pt(c.clientHeight) * 5);
+  clearBoard();
   writeLetter(
     letter,
     fontSizeInput.value || fontSize,
@@ -78,7 +86,7 @@ enabledBgInput.addEventListener("change", function (e) {
   );
 
   if (e.target.checked) {
-    ctx.drawImage(img, 45, 45);
+    drawerLetterhead();
   }
 });
 
@@ -89,6 +97,7 @@ submitInput.addEventListener("click", async (e) => {
     await fetch(`/order/${orderIdInput.value}?item=${itemSelector.value}`)
   ).json();
 
+  clearBoard();
   const { lineHeight, fontSize, letter, width, numOfItems, orderNumber } = data;
 
   // Set values for the input elements
@@ -102,8 +111,7 @@ submitInput.addEventListener("click", async (e) => {
     )
   );
   writeLetter(letter, fontSize, lineHeight, width);
-
-  ctx.drawImage(img, 45, 45);
+  drawerLetterhead();
 });
 
 },{"word-wrap":2}],2:[function(require,module,exports){
