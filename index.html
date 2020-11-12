@@ -33,6 +33,13 @@
       padding: 5px;
     }
 
+    #output, #orderInfo {
+      font-size: 12px;
+      white-space: pre-line;
+      font-family: sans-serif;
+      line-height: 1.3;
+    }
+
   </style>
   <div class="app">
     <canvas id="canvas" width="2520" height="3288"></canvas>
@@ -59,7 +66,12 @@
         <label for="enabledBg">Enable background</label>
         <input id="enabledBg" type="checkbox" checked />
       </div>
-      <p id="output"></p>
+      <div id="orderInfo"></div>
+      <div id="output"></div>
+      <div class="control">
+        <textarea id="updateLetterInput" rows="16" cols="80"></textarea>
+        <button class="button" id="updateLetterButton">Update letter</button>
+      </div>
     </div>
   </div>
   <script src="/public/bundle.js"></script>
