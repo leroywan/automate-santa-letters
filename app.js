@@ -63,7 +63,7 @@ function stripTags(someHtml) {
 
 function writeLetter(letter, fontSize, lineHeight, width) {
 
-  const letterWrapped = wrap(stripTags(letter), { width: width });
+  const letterWrapped = wrap(stripTags(letter.replace(/  +/g, '').replace(/\r\n(\r\n)?/g, '\n\n')), { width: width });
   const lines = letterWrapped.split("\n").map((item) => item.trim());
   ctx.font = `${pt(fontSize)}px Santa`;
   for (var i = 0; i < lines.length; i++) {
@@ -133,7 +133,7 @@ submitInput.addEventListener("click", async (e) => {
   lineHeightInput.value = lineHeight;
   fontSizeInput.value = fontSize;
   contentWidthInput.value = width;
-  updateLetterInput.value = stripTags(letterData.letter.replace(/  +/g, '').replace(/\r\n/g, '\n\n'));
+  updateLetterInput.value = stripTags(letter.replace(/  +/g, '').replace(/\r\n(\r\n)?/g, '\n\n'));
 
   orderInfo.innerHTML = '';
   orderInfo.innerHTML = `<p>Envelope name: ${letterData.envelopeName}
@@ -142,7 +142,7 @@ submitInput.addEventListener("click", async (e) => {
   Items in order: ${numOfItems}</p>`
 
   output.innerHTML = '';
-  output.innerHTML = `<p>${letterData.letter.replace(/  +/g, '').replace(/\r\n/g, '\n\n')}</p>`;
+  output.innerHTML = `<p>${letter.replace(/  +/g, '').replace(/\r\n(\r\n)?/g, '\n\n')}</p>`;
 
   writeLetter(letter, fontSize, lineHeight, width);
   drawerLetterhead();
