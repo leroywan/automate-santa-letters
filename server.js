@@ -137,72 +137,72 @@ ${lineItems["First Name"]}, I have been keeping a close eye on you this year and
     case "nice list":
       return {
         ...orderInfo,
-        fontSize: 18,
+        fontSize: 15.5,
         lineHeight: 23,
-        width: 60,
+        width: 64,
         letter: niceList,
       };
     case "the present":
       return {
         ...orderInfo,
-        fontSize: 19,
-        lineHeight: 25,
-        width: 56,
+        fontSize: 17,
+        lineHeight: 26,
+        width: 58,
         letter: thePresent,
       };
     case "christmas coal":
       return {
         ...orderInfo,
-        fontSize: 17.5,
-        lineHeight: 26,
-        width: 60,
+        fontSize: 15.5,
+        lineHeight: 24,
+        width: 64,
         letter: christmasCoal,
       };
     case "family history":
       return {
         ...orderInfo,
-        fontSize: 18,
-        lineHeight: 26,
-        width: 60,
+        fontSize: 16,
+        lineHeight: 25,
+        width: 62,
         letter: familyHistory,
       };
     case "the visit":
       return {
         ...orderInfo,
-        fontSize: 16.5,
-        lineHeight: 21,
-        width: 60,
+        fontSize: 15.5,
+        lineHeight: 22,
+        width: 64,
         letter: theVisit,
       };
     case "getting older":
       return {
         ...orderInfo,
-        fontSize: 17.5,
-        lineHeight: 24,
-        width: 58,
+        fontSize: 16,
+        lineHeight: 25.5,
+        width: 60,
         letter: gettingOlder,
       };
     case "good girl":
       return {
         ...orderInfo,
-        fontSize: 18,
-        lineHeight: 26,
-        width: 58,
+        fontSize: 16.5,
+        lineHeight: 27,
+        width: 62,
         letter: goodGirl,
       };
     case "christmas lights":
       return {
         ...orderInfo,
-        fontSize: 17,
-        lineHeight: 27,
+        fontSize: 16,
+        lineHeight: 25.5,
         width: 62,
         letter: christmasLights,
       };
     case "winter wonderland":
       return {
         ...orderInfo,
-        fontSize: 16.5,
-        lineHeight: 21,
+        fontSize: 16,
+        lineHeight: 23,
         width: 60,
         letter: winterWonderland,
       };
@@ -217,25 +217,25 @@ ${lineItems["First Name"]}, I have been keeping a close eye on you this year and
     case "elf on the shelf":
       return {
         ...orderInfo,
-        fontSize: 17,
+        fontSize: 15,
         lineHeight: 23,
-        width: 60,
+        width: 65,
         letter: elfOnTheShelf,
       };
     case "wash your hands (covid)":
       return {
         ...orderInfo,
-        fontSize: 17,
-        lineHeight: 23,
-        width: 60,
+        fontSize: 15.5,
+        lineHeight: 23.5,
+        width: 64,
         letter: washYourHands
       }
     case "custom letter":
       return {
         ...orderInfo,
-        fontSize: 16.5,
-        lineHeight: 21,
-        width: 60,
+        fontSize: 15,
+        lineHeight: 22,
+        width: 64,
         letter: customLetter
       }
   }
