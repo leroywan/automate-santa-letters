@@ -46,7 +46,7 @@ const x = pt(60);
 const y = pt(180);
 
 function drawerLetterhead() {
-  ctx.drawImage(img, 45, 45);
+  ctx.drawImage(img, 0, 0);
 }
 
 function clearBoard() {
@@ -62,7 +62,7 @@ function stripTags(someHtml) {
   return text;
 }
 
-function writeLetter(letter, fontSize, lineHeight, width) {
+function writeLetter(letter, fontSize, lineHeight, width, orderNumber, numOfItems) {
 
   const letterWrapped = wrap(stripTags(letter.replace(/  +/g, '').replace(/\r\n(\r\n)?/g, '\n\n')), { width: width });
   const lines = letterWrapped.split("\n").map((item) => item.trim());
@@ -70,19 +70,24 @@ function writeLetter(letter, fontSize, lineHeight, width) {
   for (var i = 0; i < lines.length; i++) {
     ctx.fillText(lines[i], x, y + i * pt(lineHeight));
   }
+
+  ctx.font = `${pt(8)}px Arial`;
+  ctx.fillText(`${orderNumber} - ${Number(itemSelector.value) + 1}/${numOfItems}`, 2448 / 2 - 100, 3168 - 350);
 }
 
 let letterData;
 function handleUpdateLetter(e) {
-  const { lineHeight, fontSize, letter, width } = letterData;
+  const { lineHeight, fontSize, letter, width, orderNumber, numOfItems } = letterData;
   clearBoard();
-  ctx.drawImage(img, 45, 45);
+  ctx.drawImage(img, 0, 0);
 
   writeLetter(
     updateLetterInput.value || letter,
     fontSizeInput.value || fontSize,
     lineHeightInput.value || lineHeight,
-    contentWidthInput.value || width
+    contentWidthInput.value || width,
+    orderNumber,
+    numOfItems
   );
 }
 
@@ -90,13 +95,15 @@ lineHeightInput.addEventListener("change", handleUpdateLetter);
 fontSizeInput.addEventListener("change", handleUpdateLetter);
 contentWidthInput.addEventListener("change", handleUpdateLetter);
 enabledBgInput.addEventListener("change", function (e) {
-  const { lineHeight, fontSize, letter, width } = letterData;
+  const { lineHeight, fontSize, letter, width, orderNumber, numOfItems} = letterData;
   clearBoard();
   writeLetter(
     updateLetterInput.value || letter,
     fontSizeInput.value || fontSize,
     lineHeightInput.value || lineHeight,
-    contentWidthInput.value || width
+    contentWidthInput.value || width,
+    orderNumber,
+    numOfItems
   );
 
   if (e.target.checked) {
@@ -105,13 +112,15 @@ enabledBgInput.addEventListener("change", function (e) {
 });
 
 updateLetterButton.addEventListener("click", async (e) => {
-  const { lineHeight, fontSize, letter, width } = letterData;
+  const { lineHeight, fontSize, letter, width, orderNumber, numOfItems } = letterData;
   clearBoard();
   writeLetter(
     updateLetterInput.value || letter,
     fontSizeInput.value || fontSize,
     lineHeightInput.value || lineHeight,
-    contentWidthInput.value || width
+    contentWidthInput.value || width,
+    orderNumber,
+    numOfItems
   );
   drawerLetterhead();
 
@@ -127,7 +136,7 @@ submitInput.addEventListener("click", async (e) => {
   ).json();
 
   clearBoard();
-  const { lineHeight, fontSize, letter, width, numOfItems, orderNumber } = data;
+  const { lineHeight, fontSize, letter, width, numOfItems, orderNumber} = data;
 
   // Set values for the input elements
   letterData = data;
@@ -145,7 +154,7 @@ submitInput.addEventListener("click", async (e) => {
   output.innerHTML = '';
   output.innerHTML = `<p>${letter.replace(/  +/g, '').replace(/\r\n(\r\n)?/g, '\n\n')}</p>`;
 
-  writeLetter(letter, fontSize, lineHeight, width);
+  writeLetter(letter, fontSize, lineHeight, width, orderNumber, numOfItems);
   drawerLetterhead();
 });
 
