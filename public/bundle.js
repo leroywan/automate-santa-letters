@@ -14,6 +14,7 @@ const img = new Image();
 img.onload = function () {
   drawerLetterhead();
 };
+img.crossOrigin="anonymous";
 img.src =
   "https://santas-postal-service.s3.us-east-2.amazonaws.com/images/letterhead.png";
 
@@ -38,6 +39,8 @@ const fontSizeInput = document.getElementById("fontSize");
 const contentWidthInput = document.getElementById("contentWidth");
 
 const enabledBgInput = document.getElementById("enabledBg");
+const downloadButton = document.getElementById("downloadButton");
+const downloadLink = document.getElementById("downloadLink");
 
 const updateLetterInput = document.getElementById("updateLetterInput");
 const updateLetterButton = document.getElementById("updateLetterButton");
@@ -156,7 +159,16 @@ submitInput.addEventListener("click", async (e) => {
 
   writeLetter(letter, fontSize, lineHeight, width, orderNumber, numOfItems);
   drawerLetterhead();
+
+  downloadLink.download = `${orderNumber.replace('#', '')}_${Number(itemSelector.value) + 1}-${numOfItems}.png`
 });
+
+downloadButton.addEventListener("click", function() {
+  enabledBgInput.click();
+  const img = c.toDataURL("image/png").replace("image/png", "image/octet-stream");
+  downloadLink.href = img;
+  downloadLink.click();
+})
 
 },{"word-wrap":2}],2:[function(require,module,exports){
 /*!
